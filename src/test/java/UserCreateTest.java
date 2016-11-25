@@ -2,6 +2,8 @@
  * Created by alex on 24.11.16.
  */
 
+import dao.controllers.UsersDAO;
+import dao.controllers.UsersDAOImpl;
 import junit.framework.TestCase;
 
 import org.hibernate.Session;
@@ -26,8 +28,11 @@ public class UserCreateTest extends TestCase{
         Users user3 = new Users();
         user3.setUsername("Test3");
         session.save(user3);
-
+        Users user4 = new Users();
+        user4.setUsername("Test4");
         session.getTransaction().commit();
+        UsersDAO usersDAO = new UsersDAOImpl();
+        //System.out.print("********************--------------------------------------------"+(usersDAO.authUser(user)?"1":"0")+(usersDAO.authUser(user)?"1":"0"));
         session.close();
     }
 }
