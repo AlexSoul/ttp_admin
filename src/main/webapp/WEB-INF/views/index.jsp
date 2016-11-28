@@ -45,9 +45,9 @@
       <form:form method="post" action="auth" commandName="user" class="form-signin">
         <h2 class="form-signin-heading">Sign in</h2>
         <label for="username" class="sr-only">Email address</label>
-        <form:input path="username"  cssClass="form-control" required="required"/>
+        <form:input path="username" id="username" placeholder="Username" cssClass="form-control" required="required"/>
         <label for="inputPassword" class="sr-only">Password</label>
-        <form:input path="userRole"  cssClass="form-control"/>
+        <form:input path="userRole" id="inputPassword" placeholder="Password" cssClass="form-control"/>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form:form>
 
