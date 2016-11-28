@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 public class UsersDAOImpl implements UsersDAO {
 
     @Autowired
-    private SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+    private SessionFactory sessionFactory;// = new Configuration().configure().buildSessionFactory();
 
 
     @Override

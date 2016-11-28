@@ -5,6 +5,7 @@ package controllers.web;
  */
 import dao.controllers.UsersDAO;
 import dao.entities.Users;
+import dao.services.UsersServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MainController {
     @Autowired
-    private UsersDAO users;
+    private UsersServices usersServices;
 
     @ModelAttribute("user")
     public Users getUsers() {
@@ -32,8 +33,8 @@ public class MainController {
     public String authUser(@ModelAttribute("user") Users user,
                              BindingResult result) {
 
-        users.authUser(user);
-
+        usersServices.authUser(user);
+        user.setUserRole(usersServices.authUser(user)?(long)1:(long)0);
         return "index";
     }
 

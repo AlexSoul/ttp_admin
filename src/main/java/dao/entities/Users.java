@@ -9,15 +9,19 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "USERS")
 public class Users {
 
     @Id
+    @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
+    @Column(name = "USERNAME")
     private String username;
 
+    @Column(name = "USERROLE")
     private Long userRole;
 
     public Long getId() {
