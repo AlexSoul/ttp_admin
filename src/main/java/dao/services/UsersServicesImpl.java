@@ -22,7 +22,7 @@ public class UsersServicesImpl implements UsersServices {
     }
 
     @Transactional
-    public boolean authUser(Users user) {
+    public Users authUser(Users user) {
         return usersDAO.authUser(user);
     }
 }

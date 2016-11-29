@@ -40,15 +40,21 @@
 <body>
 
 
-    <div class="container">
+    <div class="container" style="vertical-align: center">
 
       <form:form method="post" action="auth" commandName="user" class="form-signin">
-        <h2 class="form-signin-heading">Sign in</h2>
-        <label for="username" class="sr-only">Email address</label>
-        <form:input path="username" id="username" placeholder="Username" cssClass="form-control" required="required"/>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <form:input path="userRole" id="inputPassword" placeholder="Password" cssClass="form-control"/>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <h2 class="form-signin-heading"><spring:message code="label.auth" /></h2>
+        <label for="username" class="sr-only"><spring:message code="label.username" /></label>
+        <form:input path="username" id="username" placeholder="Login" cssClass="form-control" required="required"/>
+        <label for="inputPassword" class="sr-only"><spring:message code='label.password' />"</label>
+        <form:password path="password" id="inputPassword" placeholder="Password" cssClass="form-control" required="required"/>
+
+        <form:errors path="password" cssClass="alert alert-danger"/>
+        <br>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"><spring:message code='label.signin' /></button>
+
+
       </form:form>
 
     </div> <!-- /container -->

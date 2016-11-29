@@ -8,5 +8,5 @@ import dao.entities.Users;
 public interface UsersDAO {
     public void createUser(Users user);
 
-    public boolean authUser (Users user);
+    public Users authUser (Users user);
 }

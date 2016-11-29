@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
+import java.util.Map;
+
 @Controller
 public class MainController {
+
     @Autowired
     private UsersServices usersServices;
 
@@ -29,13 +33,32 @@ public class MainController {
         return "index";
     }
 
+
+    @RequestMapping(value = "/dashboard")
+    public String dashBoard(HttpSession session, Map<String, Object> map) {
+
+        Users currentUser = (Users)session.getAttribute("CURRENT_USER");
+        if (currentUser==null) return "redirect:/";
+
+        map.put("userName",currentUser.getUsername());
+
+        return "dashboard";
+
+    }
+
     @RequestMapping(value = "/auth", method = RequestMethod.POST)
-    public String authUser(@ModelAttribute("user") Users user,
+    public String authUser(HttpSession session, @ModelAttribute("user") Users user,
                              BindingResult result) {
 
         usersServices.authUser(user);
-        user.setUserRole(usersServices.authUser(user)?(long)1:(long)0);
-        return "index";
+        Users currentUser = usersServices.authUser(user);
+        if (currentUser==null) {
+            result.rejectValue("password","error.auth");
+            return "index";
+        }
+        session.setAttribute("CURRENT_USER", currentUser);
+        return "redirect:/dashboard";
+
     }
 
 

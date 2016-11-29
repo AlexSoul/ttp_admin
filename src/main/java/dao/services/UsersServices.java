@@ -8,6 +8,6 @@ import dao.entities.Users;
 public interface UsersServices {
     public void createUser(Users user);
 
-    public boolean authUser (Users user);
+    public Users authUser (Users user);
 }
 

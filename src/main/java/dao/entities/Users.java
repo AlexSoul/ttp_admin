@@ -4,10 +4,14 @@ package dao.entities;
  * Created by alex on 24.11.16.
  */
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 
 import javax.persistence.*;
-
+@Component
+@Scope("session")
 @Entity
 @Table(name = "USERS")
 public class Users {
@@ -23,6 +27,12 @@ public class Users {
 
     @Column(name = "USERROLE")
     private Long userRole;
+
+    @Column(name = "PASSWORD")
+    private String password;
+
+    public Users() {
+    }
 
     public Long getId() {
         return id;
@@ -46,5 +56,13 @@ public class Users {
 
     public void setUserRole(Long userRole) {
         this.userRole = userRole;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
